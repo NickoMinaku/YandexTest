@@ -1,0 +1,216 @@
+@font-face {
+    font-family: "YSText";
+    src: local("YSText"),
+        local("YS Text"),
+        local("YS-Text"),
+        url(../fonts/text-regular.woff);
+        font-weight: 400;
+}
+
+@font-face {
+    font-family: "YSText";
+    src: local("YSText"),
+        local("YS Text"),
+        local("YS-Text"),
+        url(../fonts/text-medium.woff);
+        font-weight: 500;
+}
+
+@font-face {
+    font-family: "YSText";
+    src: local("YSText"),
+        local("YS Text"),
+        local("YS-Text"),
+        url(../fonts/text-black.woff);
+        font-weight: 900;
+}
+
+$main-font: "YSText";
+
+@mixin font($fweight: 500, $lineh: 120%, $lspacing: 0){
+    letter-spacing: $lspacing;
+    font-weight: $fweight;
+    line-height: $lineh;
+}
+
+$maxWidth: 1440;
+$minWidth: 375;
+
+@mixin adaptive-value($property, $startSize, $minSize, $type: 3, $containerWidth: $maxWidth, $minWidth: $minWidth){
+    $addSize: $startSize - $minSize;
+    @if $type==1{
+        #{$property}: $startSize + px;
+        @media (min-width: #{$containerWidth + px}){
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth - $minWidth}));
+        }
+    }
+    @else if $type==2{
+        #{$property}: $startSize + px;
+        @media (max-width: #{$containerWidth + px}){
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$containerWidth - $minWidth}));
+        }
+    }
+    @else{
+        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth - $minWidth}));
+    }
+}
+
+@mixin phone{
+    @media (max-width: 600px){@content;}
+}
+
+@mixin tablet{
+    @media (min-width: 600px) and (max-width: 900px){@content;}
+}
+
+@mixin tablet-landscape{
+    @media (min-width: 900px) and (max-width: 1200px){@content;}
+}
+
+@mixin desktop{
+    @media (min-width: 1200px) and (max-width: 1800px){@content;}
+}
+
+@mixin big-desktop{
+    @media (min-width: 1800px){@content;}
+}
+
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul,
+ol,
+li{
+    list-style: none;
+}
+
+img{
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+body{
+    box-sizing: content-box;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    font-family: $main-font;
+    @include font;
+    color: black;
+}
+
+header{
+    position: relative;
+    width: 100%;
+    @include adaptive-value("padding-top", 125, 32);
+    @include adaptive-value("padding-bottom", 125, 32, 1);
+    @include adaptive-value("padding-left", 262, 32);
+    
+    &::before{
+        content: "";
+        opacity: 0.22;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%) 0, linear-gradient(90deg, #FF5C4D 0%, #EB469F 25%, #8341EF 72%, #3F68F9 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%) 0;
+        position: absolute;
+        background-blend-mode: screen;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        @include adaptive-value("width", 1440, 375);
+        @include adaptive-value("height", 804, 635);
+        background-repeat: no-repeat;
+    }
+
+    @include adaptive-value("padding-bottom", 355, 348, 2, 600);
+}
+
+img[alt="logo"]{
+    @include adaptive-value("width", 176, 112)
+}
+
+#first-title{
+    @include font(900, 100%, -2%);
+    @include adaptive-value("margin-top", 72, 32);
+    @include adaptive-value("font-size", 72, 36);
+    @include adaptive-value("width", 420, 311);
+}
+
+#offer{
+    @include font(500, 130%);
+    @include adaptive-value("font-size", 24, 18);
+    @include adaptive-value("width", 465, 311);
+    @include adaptive-value("margin-top", 48, 35);
+
+    img{
+        @include adaptive-value("width", 149, 102);
+    }
+}
+
+#offer-button{
+    @include font(500, 91.667%);
+    @include adaptive-value("font-size", 22, 18);
+    @include adaptive-value("margin-top", 44, 40);
+    @include adaptive-value("padding-top", 24, 18);
+    @include adaptive-value("padding-bottom", 24, 18);
+    @include adaptive-value("padding-left", 48, 42);
+    @include adaptive-value("padding-right", 48, 42);
+    text-align: center;
+    border-radius: 36px;
+    background: #FFDE40;
+    box-shadow: 0px 4px 98px 0px rgba(255, 222, 64, 0.59);
+    cursor: pointer;
+    @include phone{
+        position: fixed;
+        @include adaptive-value("bottom", 30, 24);
+        left: 50%;
+        transform: translate(-50%);
+        width: 82.933%;
+    }
+}
+
+#purple-bubble{
+    position: absolute;
+    @include adaptive-value("top", 83, -10, $minWidth: 600);
+    @include adaptive-value("left", 604, 285, $minWidth:600);
+    @include adaptive-value("width", 566, 243);
+    opacity: 0.5;
+    filter: blur(100px);
+    z-index: -1;
+    @include phone{
+        display: none;
+    }
+}
+
+#scooter{
+    position: absolute;
+    @include adaptive-value("top", 370, 310, 2, 600);
+    @include adaptive-value("top", 49, 24, $minWidth:600);
+    @include adaptive-value("left", 50, 5, 2, 600);
+    @include adaptive-value("left", 560, 261, $minWidth:600);
+    @include adaptive-value("width", 822, 353);
+    z-index: -1;
+}
