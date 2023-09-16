@@ -54,12 +54,14 @@ h6 {
 body {
   width: 100%;
   font-family: "YSText";
+  overflow-x: hidden;
   letter-spacing: 0;
   font-weight: 500;
   line-height: 120%;
   color: black;
   font-size: 1.5rem;
 }
+
 header {
   position: relative;
   width: 100%;
@@ -143,6 +145,7 @@ img[alt=logo] {
     -webkit-transform: translate(-50%);
             transform: translate(-50%);
     width: 82.933%;
+    z-index: 1;
   }
 }
 
@@ -377,13 +380,176 @@ img[alt=logo] {
 }
 @media (min-width: 600px) and (max-width: 900px) {
   #p1 {
-    max-width: 100%;
+    max-width: 50%;
+    min-width: 250px;
     font-size: 1.1rem;
   }
 }
 @media (max-width: 600px) {
   #p1 {
     max-width: 100%;
+    min-width: 280px;
     font-size: 1rem;
+  }
+}
+
+#pictures {
+  position: relative;
+  font-size: 1.5rem;
+  margin-top: 3.2083em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 1em;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-transform: rotate(2deg);
+          transform: rotate(2deg);
+}
+@media (max-width: 600px) {
+  #pictures {
+    font-size: 1rem;
+    -webkit-transform: none;
+            transform: none;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    min-width: 0;
+    margin-bottom: 500px;
+    -webkit-transform: scale(109.3294%);
+            transform: scale(109.3294%);
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  #pictures {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 900px) and (max-width: 1200px) {
+  #pictures {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 1800px) {
+  #pictures {
+    font-size: 2.5rem;
+  }
+}
+
+.picture {
+  position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: calc(50% - 0.5em);
+}
+.picture > img {
+  width: 100%;
+  border-radius: 2.666em;
+}
+.picture > img:nth-child(2) {
+  position: absolute;
+  -webkit-transform: rotate(-2deg);
+          transform: rotate(-2deg);
+  z-index: 1;
+}
+@media (max-width: 600px) {
+  .picture {
+    width: 100%;
+  }
+  .picture > img:nth-child(2) {
+    display: none;
+  }
+}
+
+#pictures .slick-arrow {
+  position: absolute;
+  bottom: -72px;
+  left: 50%;
+  font-size: 0;
+  width: 48px;
+  height: 48px;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#pictures .slick-arrow.slick-disabled {
+  opacity: 0.5;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#pictures .slick-arrow.slick-prev {
+  -webkit-transform: translateX(-115%);
+          transform: translateX(-115%);
+  background: url(../img/left-arrow.svg) 0 0/100% no-repeat;
+}
+
+#pictures .slick-arrow.slick-next {
+  -webkit-transform: translateX(15%);
+          transform: translateX(15%);
+  background: url(../img/right-arrow.svg) 0 0/100% no-repeat;
+}
+
+.slick-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.slick-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-column-gap: 100px;
+     -moz-column-gap: 100px;
+          column-gap: 100px;
+  width: 100%;
+}
+
+.slick-slide {
+  width: 100%;
+}
+
+.picture:nth-of-type(1) > img:nth-child(2) {
+  top: -18.7363%;
+  left: -47.4945%;
+  width: 85.5851%;
+  -webkit-filter: drop-shadow(-14px 51px 100px #D2BDFF);
+          filter: drop-shadow(-14px 51px 100px #D2BDFF);
+}
+
+.picture:nth-of-type(2) > img:nth-child(2) {
+  top: -25.2723%;
+  left: 76.9063%;
+  width: 35.7298%;
+  -webkit-filter: drop-shadow(-14px 51px 100px #C1A4FF);
+          filter: drop-shadow(-14px 51px 100px #C1A4FF);
+}
+
+.picture:nth-of-type(4) > img:nth-child(2) {
+  top: 36.8191%;
+  left: 48.5838%;
+  width: 86.274%;
+  -webkit-filter: drop-shadow(-14px 51px 100px #C1A4FF);
+          filter: drop-shadow(-14px 51px 100px #C1A4FF);
+}
+
+.picture:nth-of-type(2n+2) {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+@media (max-width: 600px) {
+  .picture:nth-of-type(2n+2) {
+    -webkit-transform: none;
+            transform: none;
   }
 }

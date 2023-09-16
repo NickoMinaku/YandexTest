@@ -115,13 +115,10 @@ h6{
 body{
     width: 100%;
     font-family: $main-font;
+    overflow-x: hidden;
     @include font;
     color: black;
     font-size: 1.5rem;
-
-    @include phone{
-        
-    }
 }
 
 header{
@@ -189,6 +186,7 @@ img[alt="logo"]{
         left: 50%;
         transform: translate(-50%);
         width: 82.933%;
+        z-index: 1;
     }
 }
 
@@ -351,11 +349,152 @@ img[alt="logo"]{
         font-size: 1.3rem;
     }
     @include tablet{
-        max-width: 100%;
+        max-width: 50%;
+        min-width: 250px;
         font-size: 1.1rem;
     }
     @include phone{
         max-width: 100%;
+        min-width: 280px;
         font-size: 1rem;
+    }
+}
+
+#pictures{
+    position: relative;
+    font-size: 1.5rem;
+    margin-top: 3.2083em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    width: 100%;
+    flex-wrap: wrap;
+    transform: rotate(2deg);
+
+    @include phone{
+        font-size: 1rem;
+        transform: none;
+        flex-wrap: nowrap;
+        min-width: 0;
+        margin-bottom: 500px;
+        transform: scale(109.3294%);
+    }
+
+    @include tablet{
+        font-size: 1rem;
+    }
+
+    @include tablet-landscape{
+        font-size: 1.3rem;
+    }
+
+    @include big-desktop{
+        font-size: 2.5rem;
+    }
+}
+
+.picture{
+    position: relative;
+    flex-shrink: 0;
+    width: calc(50% - 0.5em);
+
+    > img {
+        width: 100%;
+        border-radius: 2.666em;
+
+        @include phone{
+            
+        }
+    }
+
+    > img:nth-child(2) {
+        position: absolute;
+        transform: rotate(-2deg);
+        z-index: 1;
+    }
+
+    @include phone{
+        width: 100%;
+
+        > img:nth-child(2) {
+            display: none;
+        }
+    }
+}
+
+#pictures .slick-arrow{
+    position: absolute;
+    bottom: -72px;
+    left: 50%;
+    font-size: 0;
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+#pictures .slick-arrow.slick-disabled{
+    opacity: 0.5;
+    transition: opacity 0.5s;
+}
+
+#pictures .slick-arrow.slick-prev{
+    transform: translateX(-115%);
+    background: url(../img/left-arrow.svg) 0 0 / 100% no-repeat;
+}
+
+#pictures .slick-arrow.slick-next{
+    transform: translateX(15%);
+    background: url(../img/right-arrow.svg) 0 0 / 100% no-repeat;
+}
+
+.slick-list{
+    display: flex;
+    width: 100%;
+}
+
+.slick-track{
+    display: flex;
+    align-items: flex-start;
+    column-gap: 100px;
+    width: 100%;
+}
+
+.slick-slide{
+    width: 100%;
+}
+
+.picture:nth-of-type(1){
+    > img:nth-child(2) {
+        top:-18.7363%;
+        left:-47.4945%;
+        width:85.5851%;
+        filter: drop-shadow(-14px 51px 100px #D2BDFF);
+    }
+}
+
+.picture:nth-of-type(2){
+    > img:nth-child(2) {
+        top:-25.2723%;
+        left:76.9063%;
+        width:35.7298%;
+        filter: drop-shadow(-14px 51px 100px #C1A4FF);
+    }
+}
+
+.picture:nth-of-type(4){
+    > img:nth-child(2) {
+        top:36.8191%;
+        left:48.5838%;
+        width:86.274%;
+        filter: drop-shadow(-14px 51px 100px #C1A4FF);
+    }
+}
+
+.picture:nth-of-type(2n+2){
+    transform: translateY(-50%);
+
+    @include phone{
+        transform: none;
     }
 }
