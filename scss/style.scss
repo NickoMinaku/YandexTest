@@ -27,7 +27,7 @@
 
 $main-font: "YSText";
 
-@mixin font($fweight: 500, $lineh: 120%, $lspacing: 0){
+@mixin font($fweight: 500, $lineh: 28.8px, $lspacing: 0){
     letter-spacing: $lspacing;
     font-weight: $fweight;
     line-height: $lineh;
@@ -86,6 +86,7 @@ $minWidth: 375;
 
 a{
     text-decoration: none;
+    color: unset;
 }
 
 ul,
@@ -118,6 +119,9 @@ body{
     font-family: $main-font;
     overflow-x: hidden;
     @include font;
+    @include phone{
+        @include font($lineh:19.2px);
+    }
     color: black;
     font-size: 1.5rem;
 }
@@ -151,14 +155,26 @@ img[alt="logo"]{
 }
 
 #first-title{
-    @include font(900, 100%, -1.12px);
+    @include font(900, 72px, -1.12px);
+    @include phone{
+        @include font(900, 36px, -1.12px);
+    }
+    @include tablet-landscape{
+        @include font(900, 52px, -1.12px);
+    }
+    @include tablet{
+        @include font(900, 48px, -1.12px);
+    }
     @include adaptive-value("margin-top", 72, 32);
     @include adaptive-value("font-size", 72, 36);
     @include adaptive-value("width", 420, 311);
 }
 
 #offer{
-    @include font(500, 130%);
+    @include font(500, 31.2px);
+    @include phone{
+        @include font(500, 23.4px);
+    }
     @include adaptive-value("font-size", 24, 18);
     @include adaptive-value("width", 465, 311);
     @include adaptive-value("margin-top", 48, 35);
@@ -169,7 +185,7 @@ img[alt="logo"]{
 }
 
 #offer-button{
-    @include font(500, 91.667%);
+    @include font(500, 22px);
     @include adaptive-value("font-size", 22, 18);
     @include adaptive-value("margin-top", 44, 40);
     @include adaptive-value("padding-top", 24, 18);
@@ -187,7 +203,7 @@ img[alt="logo"]{
         left: 50%;
         transform: translate(-50%);
         width: 82.933%;
-        z-index: 1;
+        z-index: 2;
     }
 }
 
@@ -220,7 +236,7 @@ img[alt="logo"]{
 }
 
 #second-title{
-    @include font(900, 100%, -1.12px);
+    @include font(900, 56px, -1.12px);
     font-size: 3.5rem;
     width: 57.430%;
 
@@ -229,15 +245,18 @@ img[alt="logo"]{
     }
 
     @include tablet-landscape{
+        @include font(900, 48px, -1.12px);
         font-size: 2.6rem;
     }
 
     @include tablet{
+        @include font(900, 40px, -1.12px);
         width: 72.0%;
         font-size: 2.2rem;
     }
 
     @include phone{
+        @include font(900, 32px, -1.12px);
         width: 85.0%;
         font-size: 2rem;
     }
@@ -322,24 +341,32 @@ img[alt="logo"]{
 .title{
     max-width: 90.2838%;
     min-width: 33.9519%;
-    margin-top: 2.666em;
     margin-bottom: 1em;
-    @include font(900, 100%, -0.96px);
+    @include font(900, 48px, -0.96px);
     font-size: 3rem;
 
     @include phone{
         font-size: 2rem;
-        margin-top: 2.25em;
         margin-bottom: 1em;
-        @include font(900, 100%, -0.64px);
+        @include font(900, 32px, -0.64px);
     }
 
     @include tablet-landscape{
+        @include font(900, 40px, -0.64px);
         font-size: 2.7rem;
     }
 
     @include tablet{
+        @include font(900, 32px, -0.64px);
         font-size: 2rem;
+    }
+}
+
+.m1{
+    margin-top: 2.666em;
+
+    @include phone{
+        margin-top: 2.25em;
     }
 }
 
@@ -377,7 +404,6 @@ img[alt="logo"]{
         transform: none;
         flex-wrap: nowrap;
         min-width: 0;
-        margin-bottom: 500px;
         transform: scale(109.3294%);
     }
 
@@ -498,4 +524,203 @@ img[alt="logo"]{
     @include phone{
         transform: none;
     }
+}
+
+#piccontainer{
+    position: relative;
+}
+
+#icon2{
+    display: none;
+    @include phone{
+        display: block;
+        position: absolute;
+        width: 26.366%;
+        top: -21%;
+        left: 85.209%;
+        z-index: 1;
+    }
+}
+
+#b1{
+    margin-top: 5.333em;
+    width: 100%;
+    position: relative;
+
+    @include phone{
+        margin-top: 7em;
+    }
+}
+
+#b1-f{
+    max-width: 45.4%;
+    min-width: 420px;
+
+    @include tablet{
+        min-width: 300px;
+    }
+
+    @include tablet-landscape{
+        min-width: 380px;
+    }
+
+    @include phone{
+        max-width: 90%;
+        min-width: 270px;
+    }
+}
+
+#b1-f > p{
+    @include tablet-landscape{
+        font-size: 1.3rem;
+    }
+
+    @include tablet{
+        font-size: 1.1rem;
+    }
+
+    @include phone(){
+        font-size: 1rem;
+    }
+}
+
+#b1 img{
+    z-index: -1;
+    width: 892px;
+    position: absolute;
+    top: -240px;
+    left: 33.4061%;
+
+    @include tablet-landscape{
+        top: -100px;
+        width: 673px;
+    }
+    @include tablet{
+        top: -73px;
+        width: 543px;
+        left: 34.4%;
+    }
+    @include phone{
+        display: none;
+    }
+} 
+
+#b2{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    margin-top: 5.333em;
+
+    @include phone{
+        margin-top: 2.2916em;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+#b2-f{
+    max-width: 45.8515%;
+    min-width: 400px;
+
+    @include tablet{
+        min-width: 260px;
+    }
+
+    @include tablet-landscape{
+        min-width: 320px;
+    }
+
+    @include phone{
+        max-width: 100%;
+        min-width: 270px;
+    }
+}
+
+#b2-f > p{
+    @include tablet-landscape{
+        font-size: 1.3rem;
+    }
+
+    @include tablet{
+        font-size: 1.1rem;
+    }
+
+    @include phone(){
+        font-size: 1rem;
+    }
+}
+
+#b2 img{
+    z-index: -1;
+    position: absolute;
+    left: -198px;
+    top: -73px;
+    max-width: 71.179%;
+
+    @include tablet-landscape{
+        left: -198px;
+        max-width: 85%;
+    }
+    @include tablet{
+        top: -50px;
+        left: -155px;
+        max-width: 85%;
+        min-width: 350px;
+    }
+    @include phone{
+        position: static;
+        max-width: 100%;
+        transform: scale(1.4) translateX(-12px) translateY(5px);
+    }
+} 
+
+#abonement{
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    padding: 24px 48px;
+    margin-top: 2em;
+    border-radius: 36px;
+    background: #FFDE40;
+    box-shadow: 0px 4px 98px 0px rgba(255, 222, 64, 0.59);
+    cursor: pointer;
+    @include font($lineh: 22px);
+
+    @include phone{
+        padding: 18px;
+        margin-top: 1.333em;
+        font-size: 1.125rem;
+        width: 100%;
+    }
+    @include tablet-landscape{
+        font-size: 1.3rem;
+        padding: 22px 44px;
+    }
+    @include tablet{
+        padding: 20px 40px;
+        font-size: 1.2rem;
+    }
+}
+
+footer{
+    font-size: 0.8125rem;
+    color: #C5C5C5;
+    @include font($fweight:400,$lineh:15.6px);
+    @include adaptive-value("padding-left", 262, 32);
+    @include adaptive-value("padding-right", 262, 32);
+    margin-top: 5.333em;
+    margin-bottom: 5.333em;
+
+    @include phone{
+        font-size: 0.625rem;
+        @include font($fweight:400,$lineh:12px);
+    }
+    @include tablet{
+        font-size: 0.7rem;
+        @include font($fweight:400,$lineh:13px);
+    }
+}
+
+footer a{
+    text-decoration: underline;
 }
