@@ -62,6 +62,9 @@ body {
   line-height: 28.8px;
   color: black;
   font-size: 1.5rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 @media (max-width: 600px) {
   body {
